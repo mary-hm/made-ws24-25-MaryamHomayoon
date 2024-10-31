@@ -9,9 +9,9 @@ pipeline airport_pipeline {
     -> airportsTableInterpreter
     -> airportsloader;
 
- block airportsextractor oftype LocalFileExtractor {
-   filePath: "/home/maryam/Documents/MADE/ex1/rhein-kreis-neuss-flughafen-weltweit.csv";
- }
+  block airportsextractor oftype HttpExtractor {
+    url: "https://opendata.rhein-kreis-neuss.de/api/explore/v2.1/catalog/datasets/rhein-kreis-neuss-flughafen-weltweit/exports/csv?lang=en&timezone=Europe%2FBerlin&use_labels=true&delimiter=%3B";
+  }
   
   block airportsTextFileInterpreter oftype TextFileInterpreter { }
 
