@@ -1,47 +1,58 @@
-pipeline airport_pipeline {
+pipeline StadtNeuss_pipeline {
 
-  airportsextractor
-    -> airportsTextFileInterpreter;
+  treesextractor
+    -> treesTextFileInterpreter;
 
-  airportsTextFileInterpreter
-    -> airportsCSVInterpreter
-    -> airportsCoreDataSelector
-    -> airportsTableInterpreter
-    -> airportsloader;
+  treesTextFileInterpreter
+    -> treesCSVInterpreter
+    -> treesTableInterpreter
+    -> treesloader;
 
-  block airportsextractor oftype HttpExtractor {
-    url: "https://opendata.rhein-kreis-neuss.de/api/explore/v2.1/catalog/datasets/rhein-kreis-neuss-flughafen-weltweit/exports/csv?lang=en&timezone=Europe%2FBerlin&use_labels=true&delimiter=%3B";
+  block treesextractor oftype HttpExtractor {
+    url: "https://opendata.rhein-kreis-neuss.de/api/v2/catalog/datasets/stadt-neuss-herbstpflanzung-2023/exports/csv";
   }
   
-  block airportsTextFileInterpreter oftype TextFileInterpreter { }
+  block treesTextFileInterpreter oftype TextFileInterpreter { }
 
-  block airportsCSVInterpreter oftype CSVInterpreter {
+  block treesCSVInterpreter oftype CSVInterpreter {
     delimiter: ";";
   }
 
- block airportsCoreDataSelector oftype ColumnDeleter {
-   delete: [column J, column K, column L, column M];
- }
 
-
-  block airportsTableInterpreter oftype TableInterpreter {
+  block treesTableInterpreter oftype TableInterpreter {
     header: true;
     columns: [
-      "Lfd. Nummer" oftype text,
-      "Name des Flughafens" oftype text,
-      "Ort" oftype text,
-      "Land" oftype text,
-      "IATA" oftype text,
-      "ICAO" oftype text,
-      "Latitude" oftype decimal,
-      "Longitude" oftype decimal,
-      "Altitude" oftype integer,
+      "lfd_nr" oftype integer,
+      "stadtteil" oftype StadtteilStart,
+      "standort" oftype text,
+      "baumart_botanisch" oftype text,
+      "id" oftype GeoPoints,
+      "baumfamilie" oftype text,
     ];
   }
 
-  block airportsloader oftype SQLiteLoader {
-    table: "airports";
-    file: "./airports.sqlite";
+  block treesloader oftype SQLiteLoader {
+    table: "trees";
+    file: "./trees.sqlite";
   }
- 
+
+    constraint Vogelsang oftype RegexConstraint {
+        regex: /^Vogelsang-/;
+    }
+
+    valuetype StadtteilStart oftype text {
+        constraints: [
+            Vogelsang,
+        ];
+    }
+
+    constraint GeoAllow oftype RegexConstraint {
+        regex: /([0-9]{1,3}\.[0-9]+), ([0-9]{1,3}\.[0-9]+)/;
+    }
+
+    valuetype GeoPoints oftype text {
+        constraints: [
+            GeoAllow,
+        ];
+}
 }
