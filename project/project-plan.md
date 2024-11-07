@@ -2,7 +2,7 @@
 
 ## Title
 <!-- Give your project a short title. -->
-MADE project
+US crime and marijuana
 
 ## Main Question
 
@@ -12,7 +12,9 @@ MADE project
 ## Description
 
 <!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
-XY is an important problem, because... This projects analyzes XY, using method A. The results can give insights into...
+Marijuana legalization is a very controversial topic and considering its' recent legalization in Gemany I am interested to analyze correlations between marijuana legalization and shifts in crime rates.
+This projects analyzes XY, using method A.
+The results can give insights into factors like public safety, and social consequences.
 
 ## Datasources
 
