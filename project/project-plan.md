@@ -86,15 +86,7 @@ This legislation mandates that federal agencies publish their information online
 
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
-1. Example Issue ...
-2. 
-    Search for suitable datasets
-    Create Project plan and keep up to date
-    Filter out datasets and select the most important ones
-    Preprocess the selected datasets by cleaning unwanted columns and unwanted data
-    Build an automated pipeline with the cleaned data (Project Work 3 - Data Pipeline)
-    Write the data report (Project Work 4 - Data Report)
-    Test the pipeline (Project Work 5 - Automated Testing)
-    Try to find the correlation between the datasets and answer the main question
-    Make and write the final report (Project Work 7 - Final Report)
-    Prepare a presentation (Project Work 8 - Presentation)
+1. Find suitable datasets with suitable features regarding the question
+2. Creat data pipeline and select the needed features(data cleaning) and combine them into a table  
+3. Work on the data to check for anomalies and visualize them to find the correlation
+4. Write the final report to answer the question based on the visualizations and works done on the data
