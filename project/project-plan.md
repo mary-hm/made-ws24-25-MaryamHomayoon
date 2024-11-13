@@ -83,11 +83,11 @@ Short description of the DataSource.
 Short description of the DataSource.  
   
   
-### Data License: All these webpages has 'An official website of the United States government' mark and The United States government 
-has established several laws and policies to promote the accessibility and use of its datasets. Key among these is the Open, Public, 
-Electronic, and Necessary (OPEN) Government Data Act, enacted on January 14, 2019, as part of the Foundations for 
-Evidence-Based Policymaking Act. This legislation mandates that federal agencies publish their information online as open data, 
-utilizing standardized, machine-readable formats.
+### Data License: 
+All these webpages has 'An official website of the United States government' mark and The United States government has established several 
+laws and policies to promote the accessibility and use of its datasets. Key among these is the Open, Public, Electronic, and 
+Necessary (OPEN) Government Data Act, enacted on January 14, 2019, as part of the Foundations for Evidence-Based Policymaking Act. 
+This legislation mandates that federal agencies publish their information online as open data, utilizing standardized, machine-readable formats.
 
 ## Work Packages
 
