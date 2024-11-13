@@ -24,30 +24,30 @@ potentially offering insights to guide more effective social and economic polici
 
 ### Datasource1: 2023 Offenders data
 * Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
-* Data URL: https://cde.ucr.cjis.gov/LATEST/webapp/#
+* Data URL: 
 * Data Type: xlsx
 
 The FBI's Crime Data Explorer (CDE) aims to provide transparency, create easier access, and expand awareness of criminal, 
 and noncriminal, law enforcement data sharing; improve accountability for law enforcement; and provide a foundation to help 
-shape public policy in support of a safer nation. These datasets are the 
+shape public policy in support of a safer nation. These data are the **annual** offenders sex by offense category.
 
 ### Datasource2: 2022 Offenders data
 * Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
-* Data URL: https://cde.ucr.cjis.gov/LATEST/webapp/#
+* Data URL: 
 * Data Type: xlsx
 
 Short description of the DataSource.
 
 ### Datasource3: 2021 Offenders data
 * Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
-* Data URL: https://cde.ucr.cjis.gov/LATEST/webapp/#
+* Data URL: 
 * Data Type: xlsx
 
 Short description of the DataSource.
 
 ### Datasource4: 2020 Offenders data
 * Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
-* Data URL: https://cde.ucr.cjis.gov/LATEST/webapp/#
+* Data URL: 
 * Data Type: xlsx
 
 Short description of the DataSource.
@@ -58,7 +58,8 @@ Short description of the DataSource.
 * Data Type: xlsx
 
 The Current Population Survey (CPS) provides a wealth of information on the nation’s labor force including data on the employed, 
-unemployed, and those not in the labor force. These data are the *annual* employment status of the civilian noninstitutional population by age, sex, and race.  
+unemployed, and those not in the labor force. These data are the **annual** employment status of the civilian noninstitutional population 
+by age, sex, and race.  
 
 ### Datasource6: 2022 Employment status data
 * Metadata URL: https://www.bls.gov/cps/tables.htm
