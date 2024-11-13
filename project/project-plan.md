@@ -36,21 +36,15 @@ shape public policy in support of a safer nation. These data are the **annual** 
 * Data URL: 
 * Data Type: xlsx
 
-Short description of the DataSource.
-
 ### Datasource3: 2021 Offenders data
 * Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
 * Data URL: 
 * Data Type: xlsx
 
-Short description of the DataSource.
-
 ### Datasource4: 2020 Offenders data
 * Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
 * Data URL: 
 * Data Type: xlsx
-
-Short description of the DataSource.
 
 ### Datasource5: 2023 Employment status data
 * Metadata URL: https://www.bls.gov/cps/tables.htm
