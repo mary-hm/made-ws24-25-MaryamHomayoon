@@ -7,23 +7,70 @@ US crime and marijuana
 ## Main Question
 
 <!-- Think about one main question you want to answer based on the data. -->
-1. How has the legalization of marijuana affected drug-related arrests and violent crime rates in early-adopter states compared to states that have not legalized it?
+1. How does unemployment correlate with various types of crime across age groups in the U.S. in recent years?
 
 ## Description
 
-<!-- Describe your data science project in max. 200 words. Consider writing about why and how you attempt it. -->
-Marijuana legalization is a very controversial topic and considering its' recent legalization in Gemany I am interested to analyze correlations between marijuana legalization and shifts in crime rates.  
-This projects analyzes XY, using method A.  
-The results can give insights into factors like public safety, and social consequences.
+Crime rate in U.S. is always a hot topic, the capitalism and employment laws are also another arguable topics about U.S; based on these two grate matters that comes 
+
 
 ## Datasources
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
-### Datasource1: ExampleSource
-* Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/explorer/crime/nibrs-estimates
-* Data URL:drug-related arrests and violent crime rates data by states and how many states to consider is still under progress
-* Data Type: CSV
+### Datasource1: 2023 Offenders data
+* Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
+* Data URL: https://cde.ucr.cjis.gov/LATEST/webapp/#
+* Data Type: xlsx
+
+Short description of the DataSource.
+
+### Datasource1: 2022 Offenders data
+* Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
+* Data URL: https://cde.ucr.cjis.gov/LATEST/webapp/#
+* Data Type: xlsx
+
+Short description of the DataSource.
+
+### Datasource1: 2021 Offenders data
+* Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
+* Data URL: https://cde.ucr.cjis.gov/LATEST/webapp/#
+* Data Type: xlsx
+
+Short description of the DataSource.
+
+### Datasource1: 2020 Offenders data
+* Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
+* Data URL: https://cde.ucr.cjis.gov/LATEST/webapp/#
+* Data Type: xlsx
+
+Short description of the DataSource.
+
+### Datasource1: 2023 Employment status data
+* Metadata URL: https://www.bls.gov/cps/tables.htm
+* Data URL: https://www.bls.gov/cps/cpsaat03.xlsx
+* Data Type: xlsx
+
+Short description of the DataSource.
+
+### Datasource1: 2022 Employment status data
+* Metadata URL: https://www.bls.gov/cps/tables.htm
+* Data URL: https://www.bls.gov/cps/aa2022/cpsaat03.xlsx
+* Data Type: xlsx
+
+Short description of the DataSource.
+
+### Datasource1: 2021 Employment status data
+* Metadata URL: https://www.bls.gov/cps/tables.htm
+* Data URL: https://www.bls.gov/cps/aa2021/cpsaat03.xlsx
+* Data Type: xlsx
+
+Short description of the DataSource.
+
+### Datasource1: 2020 Employment status data
+* Metadata URL: https://www.bls.gov/cps/tables.htm
+* Data URL: https://www.bls.gov/cps/aa2020/cpsaat03.xlsx
+* Data Type: xlsx
 
 Short description of the DataSource.
 
@@ -32,4 +79,14 @@ Short description of the DataSource.
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
 1. Example Issue ...
-2. ...
+2. 
+    Search for suitable datasets
+    Create Project plan and keep up to date
+    Filter out datasets and select the most important ones
+    Preprocess the selected datasets by cleaning unwanted columns and unwanted data
+    Build an automated pipeline with the cleaned data (Project Work 3 - Data Pipeline)
+    Write the data report (Project Work 4 - Data Report)
+    Test the pipeline (Project Work 5 - Automated Testing)
+    Try to find the correlation between the datasets and answer the main question
+    Make and write the final report (Project Work 7 - Final Report)
+    Prepare a presentation (Project Work 8 - Presentation)
