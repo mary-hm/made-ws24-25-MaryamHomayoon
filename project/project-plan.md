@@ -22,53 +22,29 @@ potentially offering insights to guide more effective social and economic polici
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
-### Datasource1: 2023 Offenders data
+### Datasource1: 2023 to 2020 Offenders data
 * Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
-* Data URL: 
+* Data 2023:
+* Data 2022: 
+* Data 2021: 
+* Data 2020: 
 * Data Type: xlsx
 
 The FBI's Crime Data Explorer (CDE) aims to provide transparency, create easier access, and expand awareness of criminal, 
 and noncriminal, law enforcement data sharing; improve accountability for law enforcement; and provide a foundation to help 
 shape public policy in support of a safer nation. These data are the **annual** offenders sex by offense category.
 
-### Datasource2: 2022 Offenders data
-* Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
-* Data URL: 
-* Data Type: xlsx
-
-### Datasource3: 2021 Offenders data
-* Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
-* Data URL: 
-* Data Type: xlsx
-
-### Datasource4: 2020 Offenders data
-* Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
-* Data URL: 
-* Data Type: xlsx
-
-### Datasource5: 2023 Employment status data
+### Datasource2: 2023 to 202 Employment status data
 * Metadata URL: https://www.bls.gov/cps/tables.htm
-* Data URL: https://www.bls.gov/cps/cpsaat03.xlsx
+* Data 2023: https://www.bls.gov/cps/cpsaat03.xlsx
+* Data 2022: https://www.bls.gov/cps/aa2022/cpsaat03.xlsx
+* Data 2021: https://www.bls.gov/cps/aa2021/cpsaat03.xlsx
+* Data 2020: https://www.bls.gov/cps/aa2020/cpsaat03.xlsx
 * Data Type: xlsx
 
 The Current Population Survey (CPS) provides a wealth of information on the nation’s labor force including data on the employed, 
 unemployed, and those not in the labor force. These data are the **annual** employment status of the civilian noninstitutional population 
 by age, sex, and race.  
-
-### Datasource6: 2022 Employment status data
-* Metadata URL: https://www.bls.gov/cps/tables.htm
-* Data URL: https://www.bls.gov/cps/aa2022/cpsaat03.xlsx
-* Data Type: xlsx  
-
-### Datasource7: 2021 Employment status data
-* Metadata URL: https://www.bls.gov/cps/tables.htm
-* Data URL: https://www.bls.gov/cps/aa2021/cpsaat03.xlsx
-* Data Type: xlsx  
-
-### Datasource8: 2020 Employment status data
-* Metadata URL: https://www.bls.gov/cps/tables.htm
-* Data URL: https://www.bls.gov/cps/aa2020/cpsaat03.xlsx
-* Data Type: xlsx  
 
 ### Data License: 
 All these webpages has the 'An official website of the United States government' mark and The United States government has established several 
