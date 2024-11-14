@@ -81,7 +81,7 @@ This legislation mandates that federal agencies publish their information online
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
 1. Find suitable datasets with suitable features regarding the question
-1. 1. How to pull datasets from the links and not locally? learn to mimic browser download
-2. Creat data pipeline and select the needed features(data cleaning) and combine them into a table 
-3. Work on the data to check for anomalies and visualize them to find the correlation
-4. Write the final report to answer the question based on the visualizations and works done on the data
+2. How to pull datasets from the links and not locally? learn to mimic browser download
+3. Creat data pipeline and select the needed features(data cleaning) and combine them into a table 
+4. Work on the data to check for anomalies and visualize them to find the correlation
+5. Write the final report to answer the question based on the visualizations and works done on the data
