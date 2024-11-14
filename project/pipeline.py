@@ -1,7 +1,7 @@
 import requests
 import os
 
-# URLs for the datasets
+
 urls = [
     "https://www.bls.gov/cps/cpsaat03.xlsx",
     "https://www.bls.gov/cps/aa2022/cpsaat03.xlsx",
@@ -9,11 +9,6 @@ urls = [
     "https://www.bls.gov/cps/aa2020/cpsaat03.xlsx"
 ]
 
-# Data directory
-data_directory = "./data"
-os.makedirs(data_directory, exist_ok=True)
-
-# Custom headers to mimic a request from your Firefox browser on Ubuntu
 headers = {
     "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:94.0) Gecko/20100101 Firefox/94.0",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
@@ -22,9 +17,8 @@ headers = {
     "Upgrade-Insecure-Requests": "1"
 }
 
-# Attempt to download each dataset
 for i, url in enumerate(urls, start=1):
-    file_path = os.path.join(data_directory, f"dataset_{i}.xlsx")
+    file_path = os.path.join("./data", f"dataset_{i}.xlsx")
     if not os.path.exists(file_path):
         print(f"Downloading {url} as {file_path}...")
         response = requests.get(url, headers=headers)
