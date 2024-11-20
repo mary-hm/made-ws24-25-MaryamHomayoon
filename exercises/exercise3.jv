@@ -7,8 +7,8 @@ publish constraint zerotoone oftype RangeConstraint {
    upperBound: 1;
 }
 
- publish constraint notempty oftype DenylistConstraint {
-   denylist: [""];
+ publish constraint notempty oftype RegexConstraint {
+   regex: /^.+$/;
  }
 
 pipeline Finance_pipeline {
@@ -42,12 +42,12 @@ pipeline Finance_pipeline {
   }
 
   block HeaderWriter oftype CellWriter {
-   at: cell P2;
+   at: cell A1;
    write: ["Country Code"];
   }
 
   block HeaderWriter2 oftype CellWriter {
-   at: range R2:S2;
+   at: range C1:D1;
    write: ["GDP per Capita", "Bond Issuance Share"];
   }
 
