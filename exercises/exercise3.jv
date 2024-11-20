@@ -1,0 +1,92 @@
+publish constraint positive oftype RangeConstraint {
+   lowerBound: 0;
+}
+
+publish constraint zerotoone oftype RangeConstraint {
+   lowerBound: 0;
+   upperBound: 1;
+}
+
+ publish constraint notempty oftype DenylistConstraint {
+   denylist: [""];
+ }
+
+pipeline Finance_pipeline {
+
+  Financeextractor
+    -> FinanceXLSXInterpreter
+    -> FinanceSheetPicker
+    -> DataSelector
+    -> HeaderWriter
+    -> HeaderWriter2
+    -> bondIssuanceTableInterpreter
+    -> bondIssuanceloader;
+
+  HeaderWriter2
+    -> gdpPerCapitaTableInterpreter
+    -> gdpPerCapitaloader;
+
+
+  block Financeextractor oftype HttpExtractor {
+    url: "https://thedocs.worldbank.org/en/doc/7d852628d96b9411d43e5d36d5dff941-0050062022/original/Graphs-Chapter-5-02082022.xlsx";
+  }
+  
+  block FinanceXLSXInterpreter oftype XLSXInterpreter { }
+
+  block FinanceSheetPicker oftype SheetPicker {
+   sheetName: "Figure S5.1.2";
+  }
+
+  block DataSelector oftype CellRangeSelector {
+   select: range P2:S45;
+  }
+
+  block HeaderWriter oftype CellWriter {
+   at: cell P2;
+   write: ["Country Code"];
+  }
+
+  block HeaderWriter2 oftype CellWriter {
+   at: range R2:S2;
+   write: ["GDP per Capita", "Bond Issuance Share"];
+  }
+
+  block bondIssuanceTableInterpreter oftype TableInterpreter {
+   header: true;
+   columns: [
+     "Country Code" oftype emptycheck,
+     "Bond Issuance Share" oftype zerotoonedecimal,
+   ];
+  }
+
+  valuetype zerotoonedecimal oftype decimal {
+    constraints: [ zerotoone, notempty ];
+  }
+
+  valuetype emptycheck oftype CountryCodeAlpha3 {
+    constraints: [ notempty ];
+  }
+
+  block bondIssuanceloader oftype SQLiteLoader {
+    table: "bondIssuance";
+    file: "./country-stats.sqlite";
+  }
+  
+  block gdpPerCapitaTableInterpreter oftype TableInterpreter {
+   header: true;
+   columns: [
+     "Country Code" oftype emptycheck,
+     "GDP per Capita" oftype positivedecimal,
+   ];
+  }
+
+  valuetype positivedecimal oftype decimal {
+    constraints: [ positive, notempty ];
+  }
+
+  block gdpPerCapitaloader oftype SQLiteLoader {
+    table: "gdpPerCapita";
+    file: "./country-stats.sqlite";
+  }
+
+}
