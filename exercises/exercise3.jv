@@ -41,7 +41,7 @@ pipeline Finance_pipeline {
   block bondIssuanceTableInterpreter oftype TableInterpreter {
    header: true;
    columns: [
-     "Country Code" oftype emptycheck,
+     "Country Code" oftype CountryCodeAlpha3,
      "Bond Issuance Share" oftype zerotoonedecimal,
    ];
   }
@@ -54,7 +54,7 @@ pipeline Finance_pipeline {
   block gdpPerCapitaTableInterpreter oftype TableInterpreter {
    header: true;
    columns: [
-     "Country Code" oftype emptycheck,
+     "Country Code" oftype CountryCodeAlpha3,
      "GDP per Capita" oftype positivedecimal,
    ];
   }
@@ -64,12 +64,9 @@ pipeline Finance_pipeline {
     file: "./country-stats.sqlite";
   }
 
-  
-    constraint notempty oftype RegexConstraint {
-        regex: /^.+$/;
-    }
 
-    constraint zerotoone oftype RangeConstraint {
+
+    constraint zeroToOne oftype RangeConstraint {
         lowerBound: 0.0;
         upperBound: 1.0;
     }
@@ -80,21 +77,13 @@ pipeline Finance_pipeline {
 
     valuetype zerotoonedecimal oftype decimal {
         constraints: [
-            notempty,
-            zerotoone,
+            zeroToOne,
         ];
     }
 
     valuetype positivedecimal oftype decimal {
         constraints: [ 
             positive, 
-            notempty, 
-        ];
-    }
-
-    valuetype emptycheck oftype CountryCodeAlpha3 {
-        constraints: [ 
-            notempty, 
         ];
     }
     
