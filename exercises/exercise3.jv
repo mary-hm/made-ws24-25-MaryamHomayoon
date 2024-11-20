@@ -1,16 +1,3 @@
-publish constraint positive oftype RangeConstraint {
-   lowerBound: 0;
-}
-
-publish constraint zerotoone oftype RangeConstraint {
-   lowerBound: 0;
-   upperBound: 1;
-}
-
- publish constraint notempty oftype RegexConstraint {
-   regex: /^.+$/;
- }
-
 pipeline Finance_pipeline {
 
   Financeextractor
@@ -59,14 +46,6 @@ pipeline Finance_pipeline {
    ];
   }
 
-  valuetype zerotoonedecimal oftype decimal {
-    constraints: [ zerotoone, notempty ];
-  }
-
-  valuetype emptycheck oftype CountryCodeAlpha3 {
-    constraints: [ notempty ];
-  }
-
   block bondIssuanceloader oftype SQLiteLoader {
     table: "bondIssuance";
     file: "./country-stats.sqlite";
@@ -80,13 +59,44 @@ pipeline Finance_pipeline {
    ];
   }
 
-  valuetype positivedecimal oftype decimal {
-    constraints: [ positive, notempty ];
-  }
-
   block gdpPerCapitaloader oftype SQLiteLoader {
     table: "gdpPerCapita";
     file: "./country-stats.sqlite";
   }
+
+  
+    constraint notempty oftype RegexConstraint {
+        regex: /^.+$/;
+    }
+
+    constraint zerotoone oftype RangeConstraint {
+        lowerBound: 0.0;
+        upperBound: 1.0;
+    }
+
+    constraint positive oftype RangeConstraint {
+        lowerBound: 0.0;
+    }
+
+    valuetype zerotoonedecimal oftype decimal {
+        constraints: [
+            notempty,
+            zerotoone,
+        ];
+    }
+
+    valuetype positivedecimal oftype decimal {
+        constraints: [ 
+            positive, 
+            notempty, 
+        ];
+    }
+
+    valuetype emptycheck oftype CountryCodeAlpha3 {
+        constraints: [ 
+            notempty, 
+        ];
+    }
+    
 
 }
