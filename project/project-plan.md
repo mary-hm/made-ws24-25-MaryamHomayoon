@@ -49,7 +49,8 @@ various demographic groups in the United States.
 * Datasource1 permission source: https://www.census.gov/about/policies/citation.html
 * Datasource1 permission description: Data users who create their own estimates using data from disseminated tables and other data should cite the Census Bureau 
 as the source of the original data only. Conclusions drawn from any analysis of these data are the sole responsibility of the performing party.
-#
+
+
 * Datasource2 permission source: https://nces.ed.gov/help/?
 * Datasource2 permission description: Permission to Replicate Information
 Unless stated otherwise, all information on the U.S. Department of Education's NCES website at http://nces.ed.gov is in the public domain and may be reproduced,
