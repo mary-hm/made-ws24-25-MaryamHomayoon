@@ -7,15 +7,15 @@ US crime and Unemployment Correlation
 ## Main Question
 
 <!-- Think about one main question you want to answer based on the data. -->
-1. How does unemployment correlate with various types of crime across age groups in the U.S. in recent years?
+1. How does unemployment correlate with educational attainment levels across different age groups in the U.S.?
 
 ## Description
 
-Crime rates in the U.S. are a frequent topic of debate, and so are the issues on employment dynamics. 
-This analysis wants to find the relationship between unemployment and crime across different age groups, 
-shedding light on whether economic pressures and joblessness may drive individuals toward criminal activities. 
-By examining this intersection, the study aims to reveal patterns that could help us understand how economic stability affects crime rates, 
-potentially offering insights to guide more effective social and economic policies in the U.S.
+Unemployment and educational attainment are pivotal factors in shaping economic and social dynamics in the U.S. 
+This analysis explores the relationship between unemployment rates and educational attainment levels across various age groups, 
+aiming to uncover how education influences job security and economic stability at different life stages. By examining these correlations, 
+the study seeks to highlight patterns that reveal how education impacts employment stability across life stages, potentially offering insights to shape policies 
+that promote both economic security and equitable educational access.
 
 
 ## Datasources
@@ -24,33 +24,40 @@ potentially offering insights to guide more effective social and economic polici
 
 ### Datasource1: 2023 to 2020 Offenders data
 * Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
-* Data 2023:
-* Data 2022: 
-* Data 2021: 
-* Data 2020: 
+* Data 2022: https://www2.census.gov/programs-surveys/demo/tables/educational-attainment/2022/cps-detailed-tables/table-1-1.xlsx
+* Data 2021: https://www2.census.gov/programs-surveys/demo/tables/educational-attainment/2021/cps-detailed-tables/table-1-1.xlsx
+* Data 2020: https://www2.census.gov/programs-surveys/demo/tables/educational-attainment/2020/cps-detailed-tables/table-1-1.xlsx
+* Data 2019: https://www2.census.gov/programs-surveys/demo/tables/educational-attainment/2019/cps-detailed-tables/table-1-1.xlsx
+* Data 2018: https://www2.census.gov/programs-surveys/demo/tables/educational-attainment/2018/cps-detailed-tables/table-1-1.xlsx
+* Data 2017: https://www2.census.gov/programs-surveys/demo/tables/educational-attainment/2017/cps-detailed-tables/table-1-1.xlsx
 * Data Type: xlsx
 
-The FBI's Crime Data Explorer (CDE) aims to provide transparency, create easier access, and expand awareness of criminal, 
-and noncriminal, law enforcement data sharing; improve accountability for law enforcement; and provide a foundation to help 
-shape public policy in support of a safer nation. These data are the **annual** offenders sex by offense category.
+Educational Attainment of the Population 18 Years and Over, by Age, Sex, Race, and Hispanic Origin, provided by the U.S. Census Bureau, contains **annual** detailed statistics 
+on educational attainment in the United States for 2022. It includes breakdowns by age, gender, race, and ethnicity, offering comprehensive insights 
+into the distribution of education levels across the population.
 
 ### Datasource2: 2023 to 202 Employment status data
-* Metadata URL: https://www.bls.gov/cps/tables.htm
-* Data 2023: https://www.bls.gov/cps/cpsaat03.xlsx
-* Data 2022: https://www.bls.gov/cps/aa2022/cpsaat03.xlsx
-* Data 2021: https://www.bls.gov/cps/aa2021/cpsaat03.xlsx
-* Data 2020: https://www.bls.gov/cps/aa2020/cpsaat03.xlsx
+* Metadata URL: https://nces.ed.gov/
+* Data: https://nces.ed.gov/programs/digest/d23/tables/xls/tabn501.80.xlsx
 * Data Type: xlsx
 
-The Current Population Survey (CPS) provides a wealth of information on the nation’s labor force including data on the employed, 
-unemployed, and those not in the labor force. These data are the **annual** employment status of the civilian noninstitutional population 
-by age, sex, and race.  
+The Unemployment rates of persons 16 to 64 years old, by age group and highest level of educational attainment: Selected years, 1975 through 2023 dataset, 
+published by the National Center for Education Statistics (NCES), provides detailed information on unemployment rates by educational attainment level for 
+various demographic groups in the United States. 
 
 ### Data License: 
-All these webpages has the 'An official website of the United States government' mark and The United States government has established several 
-laws and policies to promote the accessibility and use of its datasets. Key among these is the Open, Public, Electronic, and 
-Necessary (OPEN) Government Data Act, enacted on January 14, 2019, as part of the Foundations for Evidence-Based Policymaking Act. 
-This legislation mandates that federal agencies publish their information online as open data, utilizing standardized, machine-readable formats.
+* Datasource1 permission source: https://www.census.gov/about/policies/citation.html
+* Datasource1 permission description: Data users who create their own estimates using data from disseminated tables and other data should cite the Census Bureau 
+as the source of the original data only. Conclusions drawn from any analysis of these data are the sole responsibility of the performing party.  
+  
+
+* Datasource2 permission source: https://nces.ed.gov/help/?
+* Datasource2 permission description: Permission to Replicate Information
+Unless stated otherwise, all information on the U.S. Department of Education's NCES website at http://nces.ed.gov is in the public domain and may be reproduced,
+published, linked to, or otherwise used without NCES' permission. This statement does not pertain to information at websites other than http://nces.ed.gov, 
+whether funded by or linked to from NCES.
+
+The following citation should be used when referencing all NCES products: U.S. Department of Education. Institute of Education Sciences, National Center for Education Statistics.
 
 ## Work Packages
 
