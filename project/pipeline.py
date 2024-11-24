@@ -1,16 +1,12 @@
-import os
 import re
 import pandas as pd
 import sqlite3
 import requests
 from io import BytesIO
 
-# Ensure the ./data directory exists
-os.makedirs('./data', exist_ok=True)
-
 # SQLite database paths
 db1_path = './data/educational_attainment.sqlite'
-db2_path = './data/transformed_data.sqlite'
+db2_path = './data/unemployed_data.sqlite'
 
 # Function to fetch files from a URL
 def fetch_file_to_memory(file_url):
@@ -69,13 +65,10 @@ def process_education(file_urls):
 
     print(f"Educational attainment data saved to '{db1_path}'.")
 
-# Function to clean and transform a different dataset
+# Function to clean and transform the unemployment dataset
 def process_unemployment(file_url):
-    """Clean and transform the second dataset."""
-    excel_data = fetch_file_to_memory(file_url)
-    data = pd.ExcelFile(excel_data)
-    sheet_name = data.sheet_names[0]  # Assuming the first sheet contains the data
-    df = data.parse(sheet_name, skiprows=2)
+    """Clean and transform the dataset."""
+    df = pd.read_excel(fetch_file_to_memory(file_url), skiprows=2)
 
     # Remove rows where the first column contains only numeric values
     df['Age group and highest level of educational attainment'] = df[
@@ -85,9 +78,9 @@ def process_unemployment(file_url):
         ~df['Age group and highest level of educational attainment'].str.isdigit()
     ]
 
-    # Remove rows starting from '--Not available' to the end of the table
+    # Remove rows starting from '--Not available' to the end of the table, including '--Not available'
     not_available_index = df[
-        df['Age group and highest level of educational attainment'].str.contains('--Not available.', na=False)
+        df['Age group and highest level of educational attainment'].str.contains('---Not available.', na=False)
     ].index.min()
     if not_available_index is not None:
         df = df.iloc[:not_available_index]
