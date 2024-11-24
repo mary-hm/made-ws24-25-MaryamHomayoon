@@ -22,7 +22,7 @@ that promote both economic security and equitable educational access.
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
-### Datasource1: 2023 to 2020 Offenders data
+### Datasource1: 2017 to 2022 Educational Attainment data
 * Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
 * Data 2022: https://www2.census.gov/programs-surveys/demo/tables/educational-attainment/2022/cps-detailed-tables/table-1-1.xlsx
 * Data 2021: https://www2.census.gov/programs-surveys/demo/tables/educational-attainment/2021/cps-detailed-tables/table-1-1.xlsx
@@ -36,21 +36,20 @@ Educational Attainment of the Population 18 Years and Over, by Age, Sex, Race, a
 on educational attainment in the United States for 2022. It includes breakdowns by age, gender, race, and ethnicity, offering comprehensive insights 
 into the distribution of education levels across the population.
 
-### Datasource2: 2023 to 202 Employment status data
+### Datasource2:  2017 to 2022 Unemployment status data
 * Metadata URL: https://nces.ed.gov/
-* Data: https://nces.ed.gov/programs/digest/d23/tables/xls/tabn501.80.xlsx
+* Data: https://nces.ed.gov/programs/digest/d22/tables/xls/tabn501.80.xlsx
 * Data Type: xlsx
 
-The Unemployment rates of persons 16 to 64 years old, by age group and highest level of educational attainment: Selected years, 1975 through 2023 dataset, 
+The Unemployment rates of persons 16 to 64 years old, by age group and highest level of educational attainment: Selected years, 1975 through 2022 dataset, 
 published by the National Center for Education Statistics (NCES), provides detailed information on unemployment rates by educational attainment level for 
 various demographic groups in the United States. 
 
 ### Data License: 
 * Datasource1 permission source: https://www.census.gov/about/policies/citation.html
 * Datasource1 permission description: Data users who create their own estimates using data from disseminated tables and other data should cite the Census Bureau 
-as the source of the original data only. Conclusions drawn from any analysis of these data are the sole responsibility of the performing party.  
-
-  
+as the source of the original data only. Conclusions drawn from any analysis of these data are the sole responsibility of the performing party.
+#
 * Datasource2 permission source: https://nces.ed.gov/help/?
 * Datasource2 permission description: Permission to Replicate Information
 Unless stated otherwise, all information on the U.S. Department of Education's NCES website at http://nces.ed.gov is in the public domain and may be reproduced,
