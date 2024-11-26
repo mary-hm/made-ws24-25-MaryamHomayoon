@@ -7,7 +7,7 @@ US educational attainment and Unemployment Correlation
 ## Main Question
 
 <!-- Think about one main question you want to answer based on the data. -->
-1. How does unemployment correlate with educational attainment levels across different age groups in the U.S.?
+1. How do unemployment rates correlate to educational attainment levels among adults aged 18 and older in the United States from 2017 to 2022?
 
 ## Description
 
