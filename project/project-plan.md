@@ -32,18 +32,14 @@ that promote both economic security and equitable educational access.
 * Data 2017: https://www2.census.gov/programs-surveys/demo/tables/educational-attainment/2017/cps-detailed-tables/table-1-1.xlsx
 * Data Type: xlsx
 
-Educational Attainment of the Population 18 Years and Over, by Age, Sex, Race, and Hispanic Origin, provided by the U.S. Census Bureau, contains **annual** detailed statistics 
-on educational attainment in the United States for 2022. It includes breakdowns by age, gender, race, and ethnicity, offering comprehensive insights 
-into the distribution of education levels across the population.
+Educational Attainment of the Population 18 Years and Over, by Age, Sex, Race, and Hispanic Origin, provided by the U.S. Census Bureau, contains **annual** detailed statistics on educational attainment in the United States. It includes breakdowns by age, gender, race, and ethnicity, offering comprehensive insights into the distribution of education levels across the population.
 
 ### Datasource2:  2017 to 2022 Unemployment status data
 * Metadata URL: https://nces.ed.gov/
 * Data: https://nces.ed.gov/programs/digest/d22/tables/xls/tabn501.80.xlsx
 * Data Type: xlsx
 
-The Unemployment rates of persons 16 to 64 years old, by age group and highest level of educational attainment: Selected years, 1975 through 2022 dataset, 
-published by the National Center for Education Statistics (NCES), provides detailed information on unemployment rates by educational attainment level for 
-various demographic groups in the United States. 
+The Unemployment rates of persons 16 to 64 years old, by age group and highest level of educational attainment: Selected years, 1975, through 2022 dataset, published by the National Center for Education Statistics (NCES), provides detailed information on unemployment rates by educational attainment level for various demographic groups in the United States. 
 
 ### Data License: 
 * Datasource1 permission source: https://www.census.gov/about/policies/citation.html
