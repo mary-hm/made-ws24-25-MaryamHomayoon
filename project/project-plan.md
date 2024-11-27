@@ -23,7 +23,7 @@ that promote both economic security and equitable educational access.
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
 ### Datasource1: 2017 to 2022 Educational Attainment data
-* Metadata URL: https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads
+* Metadata URL: https://www.census.gov/en.html
 * Data 2022: https://www2.census.gov/programs-surveys/demo/tables/educational-attainment/2022/cps-detailed-tables/table-1-1.xlsx
 * Data 2021: https://www2.census.gov/programs-surveys/demo/tables/educational-attainment/2021/cps-detailed-tables/table-1-1.xlsx
 * Data 2020: https://www2.census.gov/programs-surveys/demo/tables/educational-attainment/2020/cps-detailed-tables/table-1-1.xlsx
