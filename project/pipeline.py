@@ -28,8 +28,7 @@ def fetch_file_to_memory(file_url):
         raise Exception(f"Failed to fetch file from URL: {file_url}")
     return BytesIO(response.content)
 
-# Function to clean and transform the educational attainment dataset
-# Combining educational grades and ordering columns
+# Function to clean and transform the educational attainment dataset, Combining educational grades and ordering columns
 def process_education(file_urls):
  
     all_combined_data = []
@@ -155,10 +154,10 @@ def process_education(file_urls):
 
     print(f"Educational attainment data saved to '{db1_path}'.")
 
-# Function to clean and transform the unemployment dataset
-# Clean and transform the unemployment dataset, dropping specific age ranges and trailing empty rows
+# Function to Clean and transform the unemployment dataset, dropping specific age ranges and trailing empty rows
+# Function to Clean and transform the unemployment dataset, dropping specific age ranges and trailing empty rows
+# Includes row name cleaning as previously done in `clean_row_names`
 def process_unemployment(file_url):
-    
     df = pd.read_excel(fetch_file_to_memory(file_url), skiprows=2)
 
     # Remove rows where the first column contains only numeric values
@@ -198,14 +197,28 @@ def process_unemployment(file_url):
         df[year] = df[rate_col].astype(str) + ", " + df[std_error_col].astype(str)
 
     # Keep only the relevant columns
-    result_df = df[['Age group and highest level of educational attainment'] + years]
+    df = df[['Age group and highest level of educational attainment'] + years]
+
+    # Row name cleaning, Remove trailing '\number\' from row names
+    df['Age group and highest level of educational attainment'] = (
+        df['Age group and highest level of educational attainment']
+        .str.replace(r"\\\d+\\", "", regex=True)  # Remove trailing "\number\"
+        .str.strip()  # Remove leading/trailing spaces
+    )
+
+    # Replace "At least some college" with "Some college, no bachelor's degree"
+    df['Age group and highest level of educational attainment'] = (
+        df['Age group and highest level of educational attainment']
+        .str.replace("At least some college", "Some college, no bachelor's degree", regex=False)
+    )
 
     # Save to SQLite
     conn = sqlite3.connect(db2_path)
-    result_df.to_sql("cleaned_table", conn, if_exists="replace", index=False)
+    df.to_sql("cleaned_table", conn, if_exists="replace", index=False)
     conn.close()
 
     print(f"Unemployment dataset saved to '{db2_path}'.")
+
 
 """ 
 From here onward we are working with SQLite tables since it is not easy to do all the cleaning and transformation to the fetched data
@@ -213,7 +226,7 @@ due to its' due to its poorly structured nature
 """
 
 # Append the respective age range to the beginning of related educational level rows,
-# handling formatting inconsistencies in the specified SQLite table.
+# handling formatting inconsistencies in the specified SQLite table
 def append_age_to_levels(db_path, table_name):
 
     # Connect to the SQLite database
@@ -247,34 +260,7 @@ def append_age_to_levels(db_path, table_name):
 
     print(f"Age ranges have been appended to the table '{table_name}'.")
 
-#Clean the row names in the specified SQLite table: Removes trailing '\number\' from row names and 
-# Replaces 'At least some college' with 'Some college, no bachelor's degree' to make the educational levels the same for all age ranges
-def clean_row_names(db_path, table_name):
-    
-    # Connect to the SQLite database
-    conn = sqlite3.connect(db_path)
-    df = pd.read_sql(f"SELECT * FROM {table_name};", conn)
-
-    # Clean up row names
-    df['Age group and highest level of educational attainment'] = (
-        df['Age group and highest level of educational attainment']
-        .str.replace(r"\\\d+\\", "", regex=True)  # Remove trailing "\number\"
-        .str.strip()  # Remove leading/trailing spaces
-    )
-
-    # Replace "At least some college" with "Some college, no bachelor's degree"
-    df['Age group and highest level of educational attainment'] = (
-        df['Age group and highest level of educational attainment']
-        .str.replace("At least some college", "Some college, no bachelor's degree", regex=False)
-    )
-
-    # Save the cleaned data back to the SQLite table
-    df.to_sql(table_name, conn, if_exists="replace", index=False)
-    conn.close()
-
-    print(f"Row names in '{table_name}' have been cleaned and updated.")
-
-#Adjusts the age ranges in the unemployment dataset by combining '16 to 19' and '20 to 24' into a new '18 to 24' age range
+# Adjusts the age ranges in the unemployment dataset by combining '16 to 19' and '20 to 24' into a new '18 to 24' age range
 # for each education level, and removing the original '16 to 19' and '20 to 24' rows
 def adjust_unemployment_age_ranges(db_path, table_name):
 
@@ -354,5 +340,4 @@ def adjust_unemployment_age_ranges(db_path, table_name):
 process_education(edu_attainment_urls)
 process_unemployment(unemployment_url)
 append_age_to_levels(db2_path, 'cleaned_table')
-clean_row_names(db2_path, 'cleaned_table')
 adjust_unemployment_age_ranges(db2_path, 'cleaned_table')
