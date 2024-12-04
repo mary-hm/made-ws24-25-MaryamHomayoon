@@ -80,8 +80,7 @@ pipeline Finance_pipeline {
 
 
         constraint greaterThanOne oftype RangeConstraint {
-            lowerBound: 0;
-            lowerBoundInclusive: false;
+            lowerBound: 1;
         }
 
         constraint monthrange oftype RangeConstraint {
