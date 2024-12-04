@@ -5,8 +5,8 @@ import pandas as pd
 from pathlib import Path
 
 # Paths for SQLite databases (replace with actual paths as needed)
-EDU_ATTAINMENT_DB = '../data/educational_attainment.sqlite'
-UNEMPLOYED_DATA_DB = '../data/unemployed_data.sqlite'
+EDU_ATTAINMENT_DB = './data/educational_attainment.sqlite'
+UNEMPLOYED_DATA_DB = './data/unemployed_data.sqlite'
 
 # Test pipeline function imports (replace with your module if needed)
 from pipeline import process_education, process_unemployment
@@ -70,38 +70,25 @@ def test_integration_unemployment_pipeline(setup_unemployment_pipeline):
     assert not df.empty, "Unemployment data is empty after processing."
 
 # System test: Full pipeline execution
-# Helper function to remove files before the test (if they exist)
-def remove_file_if_exists(filepath):
-    """Remove the file if it exists, ensuring a clean slate."""
-    if os.path.exists(filepath):
-        os.remove(filepath)
-
-@pytest.fixture(scope="function")
-def cleanup_before_test():
-    """Cleanup before running the system test."""
-    # Ensure no residual files exist before the test
-    remove_file_if_exists(EDU_ATTAINMENT_DB)
-    remove_file_if_exists(UNEMPLOYED_DATA_DB)
-    yield  # No cleanup after test, files will remain if pipeline creates them
-
-def test_system_pipeline_execution(cleanup_before_test):
-    """
-    System-level test to execute the pipeline and validate that
-    the output files are created by the pipeline, not the test.
-    """
-    # Run the pipeline (this is responsible for creating the files)
-    process_education([
-        "https://www2.census.gov/programs-surveys/demo/tables/educational-attainment/2022/cps-detailed-tables/table-1-1.xlsx"
-    ])
-    process_unemployment(
-        "https://nces.ed.gov/programs/digest/d22/tables/xls/tabn501.80.xlsx"
-    )
-
-    # Validate that the pipeline created the output files
-    assert Path(EDU_ATTAINMENT_DB).exists(), "Educational attainment DB not created by pipeline."
-    assert Path(UNEMPLOYED_DATA_DB).exists(), "Unemployment DB not created by pipeline."
-
+def test_system_pipeline_execution():
+    """Run the entire pipeline and validate that the output files are created by the pipeline itself."""
+    
+    # Step 1: Remove existing files to simulate a clean environment
+    if Path(EDU_ATTAINMENT_DB).exists():
+        os.remove(EDU_ATTAINMENT_DB)
+    if Path(UNEMPLOYED_DATA_DB).exists():
+        os.remove(UNEMPLOYED_DATA_DB)
+    
+    # Step 2: Execute the pipeline (this step should create the output files)
+    process_education(EDU_ATTAINMENT_URLS)
+    process_unemployment(UNEMPLOYMENT_URL)
+    
+    # Step 3: Validate that the output files exist
+    assert Path(EDU_ATTAINMENT_DB).exists(), "Educational attainment DB file was not created by the pipeline."
+    assert Path(UNEMPLOYED_DATA_DB).exists(), "Unemployment DB file was not created by the pipeline."
 
 
 if __name__ == "__main__":
-    pytest.main(["-v"])
+    # Programmatically run pytest when the script is executed
+    pytest_args = ["-v", __file__]
+    pytest.main(pytest_args)
