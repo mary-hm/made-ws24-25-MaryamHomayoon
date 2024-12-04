@@ -44,10 +44,10 @@ pipeline Finance_pipeline {
     block TempTableInterpreter oftype TableInterpreter {
         header: true;
         columns: [
-            "id" oftype integer,
+            "id" oftype largerThanOne,
             "producer" oftype text,
             "model" oftype text,
-            "month" oftype integer,
+            "month" oftype Month,
             "temperature" oftype decimal,
             "battery_temperature" oftype decimal,
         ];
@@ -77,5 +77,27 @@ pipeline Finance_pipeline {
         table: "temperatures";
         file: "./temperatures.sqlite";
     }
+
+        constraint greaterThanOne oftype RangeConstraint {
+            lowerBound: 1;
+            lowerBoundInclusive: false;
+        }
+
+        constraint monthrange oftype RangeConstraint {
+            lowerBound: 1;
+            upperBound: 12;
+        }
+
+        valuetype largerThanOne oftype integer {
+            constraints: [
+                greaterThanOne,
+            ];
+        }
+
+        valuetype Month oftype integer {
+            constraints: [
+                monthrange,
+            ];
+        }
     
 }
