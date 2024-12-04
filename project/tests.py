@@ -4,11 +4,11 @@ import pytest
 import pandas as pd
 from pathlib import Path
 
-# Paths for SQLite databases (replace with actual paths as needed)
+# Paths for SQLite databases
 EDU_ATTAINMENT_DB = './data/educational_attainment.sqlite'
 UNEMPLOYED_DATA_DB = './data/unemployed_data.sqlite'
 
-# Test pipeline function imports (replace with your module if needed)
+# Test pipeline function imports
 from pipeline import process_education, process_unemployment
 
 # URLs for testing
@@ -29,7 +29,7 @@ def check_table_exists(db_path, table_name):
 
 @pytest.fixture(scope="module")
 def setup_edu_pipeline():
-    """Run the education pipeline before tests."""
+    # Runs education pipeline before tests
     process_education(EDU_ATTAINMENT_URLS)
     yield
     # Teardown: Delete the database
@@ -38,40 +38,41 @@ def setup_edu_pipeline():
 
 @pytest.fixture(scope="module")
 def setup_unemployment_pipeline():
-    """Run the unemployment pipeline before tests."""
+    # Runs unemployment pipeline before tests
     process_unemployment(UNEMPLOYMENT_URL)
     yield
     # Teardown: Delete the database
     if Path(UNEMPLOYED_DATA_DB).exists():
         os.remove(UNEMPLOYED_DATA_DB)
 
-# Component test: Check processed data structure
+# Component test: Test educational attainment processed data structure 
 def test_edu_data_processing(setup_edu_pipeline):
-    """Test educational attainment data processing."""
+    
     assert check_table_exists(EDU_ATTAINMENT_DB, 'educational_attainment'), \
         "Educational attainment table not found."
 
+# Component test: Test unemployment processed data structure
 def test_unemployment_data_processing(setup_unemployment_pipeline):
-    """Test unemployment data processing."""
+    
     assert check_table_exists(UNEMPLOYED_DATA_DB, 'cleaned_table'), \
         "Unemployment table not found."
 
 # Integration test: Validate SQLite outputs
 def test_integration_edu_pipeline(setup_edu_pipeline):
-    """Check specific data values in educational attainment."""
+    
     with sqlite3.connect(EDU_ATTAINMENT_DB) as conn:
         df = pd.read_sql("SELECT * FROM educational_attainment LIMIT 10;", conn)
     assert not df.empty, "Educational attainment data is empty after processing."
 
+# Check for empty data values in unemployment data.
 def test_integration_unemployment_pipeline(setup_unemployment_pipeline):
-    """Check specific data values in unemployment data."""
+    
     with sqlite3.connect(UNEMPLOYED_DATA_DB) as conn:
         df = pd.read_sql("SELECT * FROM cleaned_table LIMIT 10;", conn)
     assert not df.empty, "Unemployment data is empty after processing."
 
-# System test: Full pipeline execution
+# System test: Run the entire pipeline and validate that the output files are created by the pipeline.
 def test_system_pipeline_execution():
-    """Run the entire pipeline and validate that the output files are created by the pipeline itself."""
     
     # Step 1: Remove existing files to simulate a clean environment
     if Path(EDU_ATTAINMENT_DB).exists():
@@ -88,7 +89,7 @@ def test_system_pipeline_execution():
     assert Path(UNEMPLOYED_DATA_DB).exists(), "Unemployment DB file was not created by the pipeline."
 
 
-if __name__ == "__main__":
-    # Programmatically run pytest when the script is executed
+# Runs pytest when the script is executed
+if __name__ == "__main__": 
     pytest_args = ["-v", __file__]
     pytest.main(pytest_args)
