@@ -78,8 +78,9 @@ pipeline Finance_pipeline {
         file: "./temperatures.sqlite";
     }
 
+
         constraint greaterThanOne oftype RangeConstraint {
-            lowerBound: 1;
+            lowerBound: 0;
             lowerBoundInclusive: false;
         }
 
