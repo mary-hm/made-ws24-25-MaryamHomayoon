@@ -5,8 +5,8 @@ import requests
 from io import BytesIO
 
 # SQLite database paths
-db1_path = './data/educational_attainment.sqlite'
-db2_path = './data/unemployed_data.sqlite'
+db1_path = '../data/educational_attainment.sqlite'
+db2_path = '../data/unemployed_data.sqlite'
 
 # URLs for datasets
 edu_attainment_urls = [
