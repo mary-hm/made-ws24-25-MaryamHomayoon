@@ -29,5 +29,4 @@ jobs:
       # Run tests.sh
       - name: Tests execute
         run: |
-          chmod +x ./tests.sh
           ./tests.sh
