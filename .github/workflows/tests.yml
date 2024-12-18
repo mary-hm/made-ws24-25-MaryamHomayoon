@@ -33,4 +33,4 @@ jobs:
       # Run tests.sh
       - name: Tests execute
         run: |
-          project/tests.sh
+          ./project/tests.sh
