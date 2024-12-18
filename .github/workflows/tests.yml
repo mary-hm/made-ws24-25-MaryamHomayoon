@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: main
 
@@ -28,6 +28,5 @@ jobs:
       # Run tests.sh
       - name: Tests execute
         run: |
-          cd ./project
-          chmod +x tests.sh
-          ./tests.sh
+          chmod +x project/tests.sh
+          ./project/tests.sh
