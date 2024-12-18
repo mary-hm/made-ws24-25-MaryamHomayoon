@@ -20,7 +20,9 @@ pipeline airport_pipeline {
         path: "./stops.txt";
     }
 
-    block GTFSFileToText oftype TextFileInterpreter {}
+    block GTFSFileToText oftype TextFileInterpreter {
+        encoding: "utf8";
+    }
 
     block GTFSCSVInterpreter oftype CSVInterpreter {
         enclosing: '"';
