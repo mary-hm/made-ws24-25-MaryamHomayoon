@@ -100,3 +100,4 @@ def test_pipeline_end_to_end():
         assert "Age group and highest level of educational attainment" in unemp_df.columns, \
             "Column 'Age group and highest level of educational attainment' is missing."
 
+# some comments to check the workflow
