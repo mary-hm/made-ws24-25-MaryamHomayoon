@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - project/**
 
 jobs:
   tests-executer:
@@ -35,4 +33,4 @@ jobs:
       # Run tests.sh
       - name: Tests execute
         run: |
-          ./tests.sh
+          project/tests.sh
