@@ -334,6 +334,65 @@ def adjust_unemployment_age_ranges(db_path, table_name):
     conn.close()
 
     print(f"Adjusted age ranges in table '{table_name}' and saved to '{db_path}'.")
+    
+
+import sqlite3
+import pandas as pd
+
+def transform_educational_attainment_table(db_path, table_name):
+    """
+    Transforms an educational attainment dataset stored in an SQLite database by reshaping it so that:
+    - The first column combines age groups and educational attainment levels into a single column, excluding the year label.
+    - "High school graduate" is changed to "High school completion."
+    - Columns are years.
+    - Each cell value represents the respective count.
+    """
+    # Connect to the SQLite database
+    conn = sqlite3.connect(db_path)
+
+    # Load the table into a pandas DataFrame
+    query = f"SELECT * FROM {table_name};"
+    df = pd.read_sql_query(query, conn)
+
+    # Remove rows containing 'years and over' in the 'Age groups' column
+    filtered_df = df[~df['Age groups'].str.contains('years and over', regex=False)]
+
+    # Melt the DataFrame to reshape educational attainment levels into rows
+    melted_df = filtered_df.melt(
+        id_vars=['Age groups', 'Year'],
+        value_vars=['Total', 'Less than high school completion', 'High school graduate',
+                    "Some college, no bachelor's degree", "Bachelor's or higher degree"],
+        var_name='Educational Attainment',
+        value_name='Value'
+    )
+
+    # Update 'High school graduate' to 'High school completion'
+    melted_df['Educational Attainment'] = melted_df['Educational Attainment'].replace('High school graduate', 'High school completion')
+
+    # Combine 'Age groups' and 'Educational Attainment' into a single column, excluding the year label
+    melted_df['Age group and level of educational attainment'] = (
+        melted_df['Age groups'].str.replace(' years', '', regex=False) + ' ' + 
+        melted_df['Educational Attainment']
+    )
+
+    # Drop the original 'Age groups' and 'Educational Attainment' columns
+    melted_df.drop(columns=['Age groups', 'Educational Attainment'], inplace=True)
+
+    # Create a pivot table with 'Age group and level of educational attainment' as rows and 'Year' as columns
+    pivot_table = melted_df.pivot_table(
+        index='Age group and level of educational attainment',
+        columns='Year',
+        values='Value',
+        aggfunc='sum'
+    ).reset_index()
+
+    # Overwrite the original table in the database with the transformed data
+    pivot_table.to_sql(table_name, conn, if_exists="replace", index=False)
+
+    # Close the database connection
+    conn.close()
+
+    print(f"Transformed data saved back to table '{table_name}' in '{db_path}'.")
 
 
 # Run the processing functions
@@ -341,3 +400,4 @@ process_education(edu_attainment_urls)
 process_unemployment(unemployment_url)
 append_age_to_levels(db2_path, 'cleaned_table')
 adjust_unemployment_age_ranges(db2_path, 'cleaned_table')
+transform_educational_attainment_table(db1_path,'educational_attainment')
